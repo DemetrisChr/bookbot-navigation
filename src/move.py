@@ -20,9 +20,6 @@ def gen_pose(x,y,q):
     p.header = h
 
     msg = PoseWithCovariance()
-    
-    
-    #msg.pose = Pose(Point(0.805000007153, 1.19999969006, 0), Quaternion(0, 0, 0, 1))
     msg.pose = Pose(Point(x, y, 0), Quaternion(0, 0, q, 1))
     msg.covariance = [0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.06853891945200942]
     p.pose = msg
@@ -53,7 +50,6 @@ if __name__ == '__main__':
         #pass arguments:Point[0],Point[1],Quaternion[2]
         myarg = rospy.myargv(argv=sys.argv)
         gen_pose(float(myarg[1]),float(myarg[2]),float(myarg[3]))
-        
         #publish_nav_goal()
         rospy.loginfo("done")
     except Exception as e:
