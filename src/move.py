@@ -6,7 +6,7 @@ from navigation import publish_initial_pose, publish_goal
 
 
 try:
-    rospy.init_node('sdp-navigator')  # , log_level=roslib.msg.Log.INFO)
+    rospy.init_node('sdp_navigator')  # , log_level=roslib.msg.Log.INFO)
     # Pass arguments:Point[0],Point[1],Quaternion[2]
     myarg = rospy.myargv(argv=sys.argv)
     command = myarg[1]

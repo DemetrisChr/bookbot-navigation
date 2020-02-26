@@ -8,4 +8,6 @@ def callback(msg):
 
 rospy.init_node('check_odometry')
 odom_sub = rospy.Subscriber('/odom', Odometry, callback)
+#msg.feedback.base_position.pose
+#/movebase/feedback
 rospy.spin()
