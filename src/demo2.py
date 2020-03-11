@@ -19,7 +19,8 @@ def callback(msg):
     goalreached = False
     #print(msg.status_list)
     if (len(msg.status_list) > 0 ):
-        msg_goal_id = msg.status_list[-1].goal_id.id.split("_")[2]
+        print(msg.status_list[-1])
+        msg_goal_id = msg.status_list[-1].goal_id.id.split("-")[1]
         print(msg_goal_id)
         if(msg.status_list[-1].status == 3 and msg_goal_id == str(index)):
             goalreached = True
