@@ -2,11 +2,13 @@
 import roslib
 import rospy
 import sys
-from navigation import publish_initial_pose, publish_goal
+from navigator import Navigator
 from position import Position
 
 try:
-    rospy.init_node('sdp_navigator')  # , log_level=roslib.msg.Log.INFO)
+    rospy.init_node('sdp_navigator')
+    nav = Navigator()
+    
     # Pass arguments:Point[0],Point[1],Quaternion[2]
     myarg = rospy.myargv(argv=sys.argv)
     command = myarg[1]
@@ -17,9 +19,10 @@ try:
     position = Position(x, y, angle)
 
     if myarg[1] == 'pose':
-        publish_initial_pose(position)
+        nav.set_initial_position(position)
     elif myarg[1] == 'goal':
-        publish_goal(position)
-        rospy.loginfo("done")
+        nav.go_to(position)
+    
+    rospy.loginfo("done")
 except Exception as e:
     print("error: ", e)
