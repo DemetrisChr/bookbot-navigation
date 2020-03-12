@@ -24,7 +24,7 @@ class NavigationServer():
             self.nav.go_to(position, self.send_arrived_msg)
 
     def send_arrived_msg(self):
-        self.client.send("Arrived".encoded())
+        self.client.send("Arrived".encode())
 
 
     def decode_json(self, data):
